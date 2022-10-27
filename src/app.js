@@ -20,7 +20,10 @@ app.get("/home", (req, res) => {
   res.status(200).sendFile(path.join(__dirname, "views/home.html"));
 });
 
+// Nueva ruta que recibe una query
 app.get("/suma", (req, res) => {
+  // Datos a atravez de query 
+  // http://localhost:8000/suma?param1=2&param2=14
   const { param1, param2 } = req.query;
 
   if (!param1 || !param2) {
