@@ -10,7 +10,26 @@ const app = express();
 
 // Nuestra primer ruta
 app.get("/home", (req, res) => {
-  res.sendFile(path.join(__dirname, "views/home.html"));
+  // json
+  // res.json({key: value})
+  // plain text
+  // res.send("asd")
+  // HTTP status
+  // res.status(200).send()
+  // files
+  res.status(200).sendFile(path.join(__dirname, "views/home.html"));
+});
+
+app.get("/suma", (req, res) => {
+  const { param1, param2 } = req.query;
+
+  if (!param1 || !param2) {
+    return res.status(500).send("Faltan los parámetros");
+  }
+
+  return res
+    .status(200)
+    .send(`Resultado = ${parseInt(param1) + parseInt(param2)}`);
 });
 
 // Comenzamos a escuchar con nuestro servidor
