@@ -1,3 +1,4 @@
+const path = require("path");
 // Requerimos dotenv para acceder a nuestro .env
 require("dotenv").config();
 
@@ -8,7 +9,8 @@ const express = require("express");
 const app = express();
 
 // Configurar nuestro app
-app.use(express.static("src/views"));
+app.use(express.static(path.join(__dirname, "../public")));
+app.set("view engine", "ejs");
 
 // Requerimos los enrutadores
 const homeRoutes = require("./routes/home");
